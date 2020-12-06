@@ -1,4 +1,4 @@
-public class ComputerV1{
+public class ComputorV1{
     static String equation;
 
     public static void main(String[] args) {
