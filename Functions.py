@@ -1,15 +1,22 @@
+import re 
 import sys
-import re
 
-#solver must 
-
-#squareroot table gives squareroot degree number as 0.0000001
 def sqrt(num):
     deg = 0.0000001
     num = float(num)
     n = num
-    while((n - num/n) > deg):
+    while (n - num/n) > deg:
         n = (n + num / n)/2
-    print(n)
+    return n
 
-sqrt(25)
+def sqr_nums(num):
+    return num * num
+
+def conv_sign(sign):
+    i = 1
+    while(i < len(sign)):
+        if(sign[1] == '-'):
+            sign[i] == '+'
+        if(sign[i] == '+'):
+            sign[i] == '-'
+        i += 1
