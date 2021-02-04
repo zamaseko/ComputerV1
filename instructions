@@ -1,0 +1,20 @@
+############ take in only 1 argument 
+############ split the argument at character "=" and assign to array
+############ split both elements of array at " ",  [0] is LHS,[1] is RHS
+# create a function that will solve every fraction on each side and assign all new values to new array. do indivially for each side of equation
+############ flip signs on the right,negative to positive and vice versa
+############ concatenate both sides of equation, that will be LHS
+# split each element of array at char "^"assign them to arrays according to the degree,0 1 and 2
+# if degree > 2 && < 0, stop add all digits of the degree array and assign them to strings
+# a = degree 2,b= degree 1, c = degree 0 if polynomial degree(largest degree) == 2
+# print "Reduced form: "+a+"*X^2 + "+b+"*X^1 + "+c+"*X^0 = 0"else if == 1
+# print  "Reduced form: "+b+"*X^1 + "+c+"*X^0 = 0"basically reduced forms will be =>aX^2 + bX + c = 0 orb;X + c = 0
+# print the polynomial degree turn a b and c into floats, incase of decimals or fractions
+# calculate discriminant
+############ discriminant = (b*b) - (4*(a*c))if theres a missing value,replace with 0 eg if polynomial degree is 1, a = 0 if polynomial degree is 0.check value of discriminant
+############ if == 0, print "This equation accepts all real numbers as solution." and stop else print "This equation has no solution." and stop
+############ if polynomial degree == 2,check discriminantif > 0, print "Discriminant is strictly positive, the two solutions are:"else if < 0 "Discriminant is strictly negative, the two solutions are:"
+# for the 2 scenarios above:solution 1 = (-b - sqroot(discriminant)) / (2 * a)solution2 = (-b + sqroot(discriminant)) / (2 * a)print solution 1print solution 2
+# else print "Discriminant is zero, the two solution is:"then:solution = (-b - sqroot(discriminant)) / (2 * a)print solution
+# else if polynomial degree == 1solution = -c/b
+# print solution
