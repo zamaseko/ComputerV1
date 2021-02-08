@@ -1,6 +1,7 @@
 package comp;
 
 import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 
 public class ComputorV1
@@ -17,18 +18,21 @@ public class ComputorV1
         System.out.println(formula[1]);
         String ls[] = formula[0].split(" ");
         String rs[] = formula[1].split(" ");
-        String lhs[] = new String[ls.length];
-        String rhs[] = new String[rs.length];
+        // String lhs[] = new String[ls.length];
+        // String rhs[] = new String[rs.length];
+        List<String> lhs = new ArrayList<String>();
+        List<String> rhs = new ArrayList<String>();
         List<String> deg0 = new ArrayList<String>();
         List<String> deg1 = new ArrayList<String>();
         List<String> deg2 = new ArrayList<String>();
         calculate(lhs,ls);
         calculate(rhs,rs);
-        // conv_sign(rhs);
+        conv_sign(rhs);
         //Combine arrays next line. forgot how
-        int left = lhs.length;
-        int right = rhs.length;
+        int left = lhs.size();
+        int right = rhs.size();
         String[] fin = new String[left + right];
+        System.out.println(fin);
         int poly_deg = sort_deg(deg0,deg1,deg2,fin);
         String a1,b1,c1 = "";
         a1 = reduce(deg2);
@@ -78,44 +82,52 @@ public class ComputorV1
             System.out.println(sol);
         }
     }
-    public static void calculate(String []poly1,String []poly2)
+    public static void calculate(List<String> poly1,String []poly2)
     {
         int i = 0;
         int i2 = 1;
-        poly1[i] = poly2[0];
+        // poly1[i] = poly2[0];
+        poly1.add(poly2[0]);
     while(i2 < poly2.length)
     {
         if(poly2[i2] == "+" || poly2[i2] == "-")
         {
             i += 1;
-            poly1[i] = poly2[i2];
+            // poly1[i] = poly2[i2];
+            poly1.add(poly2[i2]);
         }
         else
         {
-            if (poly1[i].contains("/"))
+            // if (poly1[i].contains("/"))
+            if(poly1.get(i).contains("/"))
             {
-                String div[] = poly1[i].split("/");
+                // String div[] = poly1[i].split("/");
+                String[] div = poly1.get(i).split("/");
                 if(Double.parseDouble(div[1]) == 0)
-                    System.out.println(poly1[i] + " : Denominator is 0, Number is undefined");
+                    System.out.println(poly1.get(i) + " : Denominator is 0, Number is undefined");
                 int number = Integer.parseInt(div[0]) / Integer.parseInt(div[1]);
-                poly1[i] = Integer.toString(number);
+                // poly1[i] = Integer.toString(number);
+                poly1.add(Integer.toString(number));
             }
-            poly1[i] = poly1[i] + poly2[i2];
+            // poly1[i] = poly1[i] + poly2[i2];
+            // poly1.add(poly1.get(i)) + poly1.add( poly2[i2]);
+            poly1.get(i);
+            poly1.add(poly2[i2]);
         }
         i2 += 1;
-    }
-    }
-    public static void conv_sign(String poly[])
-    {
+    }    }
+    public static void conv_sign(List<String> rhs) {
         int i = 0;
-        while(i < poly.length)
-        {
-            if(poly[i].charAt(0) == '-')
-                poly[i] = "+"+poly[i];
-            else if (poly[i].charAt(0) == '+')
-                poly[i] = "-"+poly[i];
+        while (i < rhs.size()) {
+            if (rhs.get(i) ==  "-")
+                // rhs[i] = "+" + rhs[i];
+                rhs.add("+");
+            else if (rhs.get(i) == "+")
+                // rhs[i] = "-" + rhs[i];
+                rhs.add("-");
             else
-                poly[i] = "-" + poly[i];
+                // rhs[i] = "-" + rhs[i];
+                rhs.get(i);
             i += 1;
         }
     }
