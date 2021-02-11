@@ -132,7 +132,7 @@ def solve():
 
         print(solution1)
         print(solution2)    
-    elif(power == 1):
+    elif(pd == 1):
         solution = -c/b
         print(solution)
 
