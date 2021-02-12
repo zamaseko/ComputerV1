@@ -86,6 +86,9 @@ def solve():
     equat = left + right
     eq = simplify(equation)
     i = 0
+    a = 0
+    b = 0
+    c = 0
     reduction = eq.split(" ")
     while(i < len(left)):
         if (reduction[i] == "X^0"):
@@ -111,12 +114,14 @@ def solve():
         sys.exit("The polynomial degree cannot br greater that 2")
 
     discriminant = (b * b) - (4 *(a * c))
+    print(discriminant)
     if(pd == 0):
         if(discriminant == 0):
             sys.exit("The equation only takes in real numbers")
         else:
             sys.exit("NO real solutions")
-    
+    if(a == 0):
+        sys.exit("Your a value is 0, you cannot divide by 0")
     discriminant = float(discriminant)
     if(pd == 2):
         if(discriminant > 0):
@@ -127,8 +132,8 @@ def solve():
             print("The discriminant is zero. The solution is: ")
             solution = (- b -sqrt(discriminant)) / (2 * a)
             sys.exit(str(solution))
-        solution1 = (-b - sqrt(discriminant)) / (2 * a)
-        solution2 = (-b + sqrt(discriminant)) / (2 * a)
+        solution1 = (- b - sqrt(discriminant)) / (2 * a)
+        solution2 = (- b + sqrt(discriminant)) / (2 * a)
 
         print(solution1)
         print(solution2)    
